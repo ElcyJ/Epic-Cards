@@ -39,7 +39,8 @@ switch (msgId)
         
     break;
     
-    case 3://login request 
+    case 3://login request
+        var pId =  buffer_read(buffer, buffer_u32);
         var playerUsername = buffer_read(buffer, buffer_string);
         var passwordHash = buffer_read(buffer, buffer_string);
         var response = 0;
@@ -52,6 +53,14 @@ switch (msgId)
             if (passwordHash == playerStoredPassword)
             {
                 response = 1;
+                
+                with (obj_student)
+                {
+                    if (studentIdentifier == pId)
+                    {
+                        studentName = playerUsername;
+                    }
+                }
             }
         }
         ini_close();
@@ -63,5 +72,64 @@ switch (msgId)
         network_send_packet(socket, global.buffer, buffer_tell(global.buffer));
         
     break;
+    
+    case 6:
+        var pId = buffer_read(buffer, buffer_u32);
+        var pName = '';
+        
+        with (obj_student)
+        {
+            if (studentIdentifier == pId)
+            {
+                studentInGame = !studentInGame;
+                pName = studentName;
+            }
+        }
+        
+        //tell others players about this change 
+        for (var i = 0; i < ds_list_size(global.students); i++)
+        {
+            var storedStudentSocket = ds_list_find_value(global.students, i);
+            
+            if (storedStudentSocket != socket)
+            {
+                buffer_seek(global.buffer, buffer_seek_start, 0);
+                buffer_write(global.buffer, buffer_u8, 6);
+                buffer_write(global.buffer, buffer_u32, pId);
+                buffer_write(global.buffer, buffer_string, pName);
+                network_send_packet(storedStudentSocket, global.buffer, buffer_tell(global.buffer));
+            }
+        }
+        
+        //tell me about others players
+        for (var i = 0; i < ds_list_size(global.students); i++)
+        {
+            var storedStudentSocket = ds_list_find_value(global.students, i);
+            
+            if (storedStudentSocket != socket)
+            {
+                var student = noone;
+                
+                with (obj_student)
+                {
+                    if (self.studentSocket == storedStudentSocket)
+                    {
+                        student = id;
+                    }    
+                }
+                if (student != noone)
+                {
+                    if (student.studentInGame)
+                    {
+                        buffer_seek(global.buffer, buffer_seek_start, 0);
+                        buffer_write(global.buffer, buffer_u8, 6);
+                        buffer_write(global.buffer, buffer_u32, student.studentIdentifier);
+                        buffer_write(global.buffer, buffer_string, student.studentName);
+                        network_send_packet(socket, global.buffer, buffer_tell(global.buffer));   
+                    }
+                }
+            }
+        }
+    break;      
 }
 

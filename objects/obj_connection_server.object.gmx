@@ -35,7 +35,8 @@ var bufferAlignment = 1;
 server = network_create_server(networkType, port, maxPlayers);
 global.buffer = buffer_create(bufferSize, bufferType, bufferAlignment);
 
-sockets = ds_list_create();
+global.students = ds_list_create();
+studentIdCounter = 0;
 
 with(obj_message)
 {
@@ -71,32 +72,84 @@ switch(eventType)
 {
     case network_type_connect:
         var socket = ds_map_find_value(async_load, 'socket');
-        ds_list_add(sockets, socket);
         
-        with(obj_message)
+        studentIdCounter ++;
+        
+        var pId = studentIdCounter;
+        
+        //crate the student
+        with (instance_create(0, 0, obj_student))
+        {
+            studentIdentifier = pId;
+            studentName = '';
+            studentInGame = false;
+            studentSocket = socket;
+        }
+        ds_list_add(global.students, socket);
+        
+        //send student id
+        buffer_seek(global.buffer, buffer_seek_start, 0);
+        buffer_write(global.buffer, buffer_u8, 4);
+        buffer_write(global.buffer, buffer_u32, studentIdCounter);
+        network_send_packet(socket, global.buffer, buffer_tell(global.buffer));
+        
+        scr_showNotification('Um novo aluno entrou!');
+        /*with(obj_message)
         {
             instance_destroy();
         }
         
         var notification = instance_create(0, 0, obj_message);
-        notification.message = 'New player entered!';
+        notification.message = 'New player entered!';*/
     break;
     case network_type_disconnect:
         var socket = ds_map_find_value(async_load, 'socket');
-        var findSocket = ds_list_find_index(sockets, socket);
+        var index = ds_list_find_index(global.students, socket);
         
-        if (findSocket &gt;=0)
+        if (index != -1)
         {
-            ds_list_delete(sockets, findSocket);
+            ds_list_delete(global.students, socket);
         }
         
-        with(obj_message)
+        //get some info about this student leaving
+        var studentLeavingId = 0;
+        
+        with (obj_student)
+        {
+            if (studentSocket == socket)
+            {
+                studentLeavingId = studentIdentifier;
+            }
+        }
+        
+        //notify all players
+        for (var i = 0; i &lt; ds_list_size(global.students); i++)
+        {
+            var storedStudentSocket = ds_list_find_value(global.students, i);
+            
+            buffer_seek(global.buffer, buffer_seek_start, 0);
+            buffer_write(global.buffer, buffer_u8, 5);
+            buffer_write(global.buffer, buffer_u32, studentLeavingId);
+            network_send_packet(storedStudentSocket, global.buffer, buffer_tell(global.buffer));
+        }
+        
+        with (obj_student)
+        {
+            if (studentIdentifier == studentLeavingId)
+            {
+                instance_destroy();
+            }
+        }
+        
+        scr_showNotification('Um aluno saiu')
+        
+        /*with(obj_message)
         {
             instance_destroy();
         }
         
         var notification = instance_create(0, 0, obj_message);
-        notification.message = 'Player left!';
+        notification.message = 'Player left!';*/
     break;
     case network_type_data:
         var buffer = ds_map_find_value(async_load, 'buffer');
@@ -129,7 +182,7 @@ switch(eventType)
             <kind>1</kind>
             <string>network_destroy(server);
 buffer_delete(global.buffer);
-ds_list_destroy(sockets);
+ds_list_destroy(global.students);
 </string>
           </argument>
         </arguments>
@@ -153,8 +206,22 @@ ds_list_destroy(sockets);
           <argument>
             <kind>1</kind>
             <string>draw_set_colour(c_white);
+draw_set_font(fnt_1);
+draw_set_valign(fa_middle);
 draw_text(5, 5, 'Server status: ' + string(server &gt;= 0));
-draw_text(5, 20, 'Total clients: ' + string(ds_list_size(sockets)));
+draw_text(5, 20, 'Total clients: ' + string(ds_list_size(global.students))); //not global
+
+var xx = room_width/2;
+var yy = 150;
+
+with (obj_student)
+{
+    draw_text(xx, yy, studentIdentifier);
+    draw_text(xx, yy+20, studentName);
+    draw_text(xx, yy+40, studentInGame);
+}
+
+yy += 60;   
 </string>
           </argument>
         </arguments>

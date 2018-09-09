@@ -31,8 +31,61 @@ switch(msgId)
             break;
             
             case 1://success
-                room_goto(rm_gameWorld);
+                room_goto(rm_mainMenu);
             break;
         }
     break;
+    
+    case 4:
+        global.studentId = buffer_read(buffer, buffer_u32);
+        scr_showNotification('Id do aluno recebido');
+    break;
+    
+    case 5:
+        var pId = buffer_read(buffer, buffer_u32);
+        with (obj_remoteStudent)
+        {
+            if (remoteStudentId = pId)
+            {
+                instance_destroy();
+            }
+        }
+    break;
+    
+    case 6:
+        var pId = buffer_read(buffer, buffer_u32);
+        var pName = buffer_read(buffer, buffer_string);
+        
+        var instance = noone;
+        
+        with (obj_remoteStudent)
+        {
+            if (remoteStudentId == pId)
+            {
+                instance = id;
+            }
+        }    
+        if (instance == noone)
+        {
+            //only if we're in the gameWorld
+            if (instance_exists(obj_localStudent))
+            {
+                //create a remote player
+                var remoteStudent = instance_create(room_width/2, room_height/2, obj_remoteStudent);
+                remoteStudent.remoteStudentId = pId;
+                remoteStudent.remoteStudentName = pName;
+            }
+        }
+        else
+        {
+            with (instance)
+            {
+                instance_destroy();
+            }
+        }
+    break;
+    
+    
+    
+    
 }
