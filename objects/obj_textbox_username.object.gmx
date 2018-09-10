@@ -73,13 +73,51 @@
             <kind>1</kind>
             <string>if (can_click)
 {
+    msg = get_string_async("Escreva seu nome","Ana");
     selected = true;
-    keyboard_string = txt;
+    //keyboard_string = txt;
     obj_textbox_password1.selected = false;
     if (instance_exists(obj_textbox_password2))
     {
         obj_textbox_password2.selected = false;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="63">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (selected)
+{
+    var i_d = ds_map_find_value(async_load, "id");
+     if i_d == msg
+        {
+        if ds_map_find_value(async_load, "status")
+           {
+           if ds_map_find_value(async_load, "result") != ""
+              {
+              nameLogin = ds_map_find_value(async_load, "result");
+              txt = nameLogin
+              }
+           }
+        }
 }
 </string>
           </argument>
