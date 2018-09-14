@@ -217,8 +217,8 @@ var yy = 150;
 with (obj_student)
 {
     draw_text(xx, yy, studentIdentifier);
-    draw_text(xx, yy+20, studentName);
-    draw_text(xx, yy+40, studentInGame);
+    draw_text(xx, yy+32, studentName);
+    draw_text(xx, yy+72, studentInGame);
 }
 
 yy += 60;   

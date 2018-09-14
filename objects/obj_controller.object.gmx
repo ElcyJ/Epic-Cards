@@ -8,6 +8,70 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.selectionNumber = 0;
+
+global.match[0, 0] = undefined
+global.match[0, 1] = undefined
+global.match[0, 2] = undefined
+global.match[1, 0] = undefined
+global.match[1, 1] = undefined
+global.match[1, 2] = undefined
+
+global.can_Select = true;
+
+
+scr_cardGenerator();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with (obj_card)
+{
+    flipped = true;
+}
+
+global.canSelect = true;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,15 +89,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//Update latency
-buffer_seek(global.buffer, buffer_seek_start, 0);
-buffer_write(global.buffer, buffer_u8, 7);
-buffer_write(global.buffer, buffer_u32, global.studentId);
-buffer_write(global.buffer, buffer_s32, global.studentScore); //f
-network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));
-
-
+            <string>if (global.countdown &gt; 0) global.countdown-=(1/room_speed);
+else
+{
+    room_goto(rm_error);
+}
 </string>
           </argument>
         </arguments>
@@ -56,38 +116,20 @@ network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(glo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour(c_green);
-draw_circle(x, y, 15, true);
-draw_text(64, 162, global.studentScore);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//tell the server we're leaving the game room
-buffer_seek(global.buffer, buffer_seek_start, 0);
-buffer_write(global.buffer, buffer_u8, 6);
-buffer_write(global.buffer, buffer_u32, global.studentId);
-network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));
+            <string>draw_set_colour(make_colour_rgb(183, 224, 31));
 
-room_goto(rm_mainMenu);
+draw_set_font(fnt_1);
+
+draw_text(50, 10, 'Card 1 sprite_index: ' + string(global.match[0, 0]));
+draw_text(50, 42, 'Card 1 image_index: ' + string(global.match[0, 1]));//y25
+draw_text(50, 74, 'Card 1 id: ' + string(global.match[0, 2]));//y40
+draw_text(704, 10, 'Card 2 sprite_index: ' + string(global.match[1, 0]));//x400
+draw_text(704, 42, 'Card 2 image_index: ' + string(global.match[1, 1]));
+draw_text(704, 74, 'Card 2 id: ' + string(global.match[1, 2]));
+
+draw_text(1300, 10, 'Flip Attempts: ' + string(global.flipAttempts));
+
+draw_text(1600, 10, 'Countdown: ' + string(global.countdown));
 </string>
           </argument>
         </arguments>

@@ -54,6 +54,7 @@ switch(msgId)
     
     case 6:
         var pId = buffer_read(buffer, buffer_u32);
+        //var pScore = buffer_read(buffer, buffer_u32);
         var pName = buffer_read(buffer, buffer_string);
         
         var instance = noone;
@@ -74,6 +75,7 @@ switch(msgId)
                 var remoteStudent = instance_create(room_width/2, room_height/2, obj_remoteStudent);
                 remoteStudent.remoteStudentId = pId;
                 remoteStudent.remoteStudentName = pName;
+                //remoteStudentScore = pScore
             }
         }
         else
@@ -85,7 +87,18 @@ switch(msgId)
         }
     break;
     
+    case 7:
+        var pId = buffer_read(buffer, buffer_u32);
+        var pScore = buffer_read(buffer, buffer_s32);
+        
+        with (obj_remoteStudent)
+        {
+            if (remoteStudentId == pId)
+            {
+                remoteStudentScore = pScore;
+            }
+        }
     
-    
-    
+    break;
+      
 }

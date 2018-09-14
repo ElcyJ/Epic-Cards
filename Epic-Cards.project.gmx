@@ -7,12 +7,23 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_textbox</sprite>
-    <sprite>sprites\spr_btn_exit</sprite>
-    <sprite>sprites\spr_btn_play</sprite>
-    <sprite>sprites\spr_student</sprite>
-    <sprite>sprites\spr_btn_teacher</sprite>
-    <sprite>sprites\spr_btn_login</sprite>
-    <sprite>sprites\spr_btn_register</sprite>
+    <sprites name="butons">
+      <sprite>sprites\spr_btn_exit</sprite>
+      <sprite>sprites\spr_btn_play</sprite>
+      <sprite>sprites\spr_btn_login</sprite>
+      <sprite>sprites\spr_btn_teacher</sprite>
+      <sprite>sprites\spr_student</sprite>
+      <sprite>sprites\spr_btn_register</sprite>
+    </sprites>
+    <sprites name="cards">
+      <sprite>sprites\spr_cardBase</sprite>
+      <sprite>sprites\spr_cardFire</sprite>
+      <sprite>sprites\spr_cardSelected</sprite>
+    </sprites>
+    <sprites name="equations">
+      <sprite>sprites\spr_e1</sprite>
+      <sprite>sprites\spr_e2</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -20,18 +31,22 @@
     <script>scripts\scr_handleIncomingPackets_server.gml</script>
     <script>scripts\scr_handleIncomingPackets_client.gml</script>
     <script>scripts\scr_showNotification.gml</script>
+    <script>scripts\scr_cardGenerator.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
     <font>fonts\fnt_1</font>
   </fonts>
   <objects name="objects">
+    <object>objects\obj_card</object>
+    <object>objects\obj_cardFire</object>
     <object>objects\obj_message</object>
     <object>objects\obj_connection_server</object>
     <object>objects\obj_connection_client</object>
     <object>objects\obj_student</object>
     <object>objects\obj_remoteStudent</object>
     <object>objects\obj_localStudent</object>
+    <object>objects\obj_controller</object>
     <objects name="menus">
       <objects name="registration">
         <object>objects\obj_textbox_password2</object>
@@ -42,8 +57,8 @@
         <object>objects\obj_textbox_username</object>
       </objects>
       <objects name="login">
-        <object>objects\obj_textbox_password1</object>
         <object>objects\obj_btn_login</object>
+        <object>objects\obj_textbox_password1</object>
       </objects>
       <objects name="selection">
         <object>objects\obj_btn_teacher</object>

@@ -76,6 +76,7 @@ switch (msgId)
     case 6:
         var pId = buffer_read(buffer, buffer_u32);
         var pName = '';
+        //var pScore = 0;
         
         with (obj_student)
         {
@@ -83,6 +84,7 @@ switch (msgId)
             {
                 studentInGame = !studentInGame;
                 pName = studentName;
+                //pScore = studentScore;//
             }
         }
         
@@ -96,10 +98,11 @@ switch (msgId)
                 buffer_seek(global.buffer, buffer_seek_start, 0);
                 buffer_write(global.buffer, buffer_u8, 6);
                 buffer_write(global.buffer, buffer_u32, pId);
+                //buffer_write(global.buffer, buffer_u32, pScore);//
                 buffer_write(global.buffer, buffer_string, pName);
                 network_send_packet(storedStudentSocket, global.buffer, buffer_tell(global.buffer));
             }
-        }
+         }
         
         //tell me about others players
         for (var i = 0; i < ds_list_size(global.students); i++)
@@ -124,12 +127,35 @@ switch (msgId)
                         buffer_seek(global.buffer, buffer_seek_start, 0);
                         buffer_write(global.buffer, buffer_u8, 6);
                         buffer_write(global.buffer, buffer_u32, student.studentIdentifier);
+                        //buffer_write(global.buffer, buffer_u32, student.studentScore);
                         buffer_write(global.buffer, buffer_string, student.studentName);
                         network_send_packet(socket, global.buffer, buffer_tell(global.buffer));   
                     }
                 }
             }
         }
-    break;      
+    break;
+    
+   case 7:
+        var pId = buffer_read(buffer, buffer_u32);
+        var pScore = buffer_read(buffer, buffer_s32);
+        
+        //tell others players about this change 
+        for (var i = 0; i < ds_list_size(global.students); i++)
+        {
+            var storedStudentSocket = ds_list_find_value(global.students, i);
+            
+            if (storedStudentSocket != socket)
+            {
+                buffer_seek(global.buffer, buffer_seek_start, 0);
+                buffer_write(global.buffer, buffer_u8, 7);
+                buffer_write(global.buffer, buffer_u32, pId);
+                buffer_write(global.buffer, buffer_s32, pScore);
+                network_send_packet(storedStudentSocket, global.buffer, buffer_tell(global.buffer));
+            }
+         }
+        
+        
+    break;  
 }
 
