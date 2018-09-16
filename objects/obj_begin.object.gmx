@@ -32,6 +32,9 @@ global.studentScore = 0;
 global.countdown = 120;
 
 global.studentLife = 1500;
+
+
+
 </string>
           </argument>
         </arguments>

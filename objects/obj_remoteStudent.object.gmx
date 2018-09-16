@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-3000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>remoteStudentName = '';
-remoteStudentId = 0;
-remoteStudentScore = 0;
-remoteStudentLife = 0;
-depth = -3000
+            <string>global.remoteStudentName = '';
+global.remoteStudentId = 0;
+global.remoteStudentScore = 0;
+global.remoteStudentLife = 1500;
+
 </string>
           </argument>
         </arguments>
@@ -56,9 +56,10 @@ depth = -3000
 //draw_circle(x, y, 15, true);
 draw_set_font(fnt_1);
 //draw_text(1632, 96, string(remoteStudentId)); //x, y-50,1632, 96
-draw_text(1632, 128, string(remoteStudentName)); //x, y-25,1632, 160
-draw_text(1632, 160, string(remoteStudentScore));
-draw_text(1632, 192, string(remoteStudentLife));
+
+draw_text(1632, 128, string(global.remoteStudentName)); //x, y-25,1632, 160
+draw_text(1632, 160, string(global.remoteStudentScore));
+draw_text(1632, 192, string(global.remoteStudentLife));
 </string>
           </argument>
         </arguments>

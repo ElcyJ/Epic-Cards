@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>socket = network_create_socket(network_socket_tcp);
-ip = get_string('IP', '192.168.0.0');
+ip = get_string('IP', '127.0.0.1');
 isConnected = network_connect(socket, ip, 50000);
 global.buffer = buffer_create(1024, buffer_fixed, 1);
 latency = 0;

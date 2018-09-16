@@ -43,13 +43,13 @@ switch(msgId)
     
     case 5:
         var pId = buffer_read(buffer, buffer_u32);
-        with (obj_remoteStudent)
+        /*with (obj_remoteStudent)
         {
-            if (remoteStudentId = pId)
+            if (global.remoteStudentId = pId)
             {
                 instance_destroy();
             }
-        }
+        }*/
     break;
     
     case 6:
@@ -61,7 +61,7 @@ switch(msgId)
         
         with (obj_remoteStudent)
         {
-            if (remoteStudentId == pId)
+            if (global.remoteStudentId == pId)
             {
                 instance = id;
             }
@@ -71,10 +71,17 @@ switch(msgId)
             //only if we're in the gameWorld
             if (instance_exists(obj_localStudent))
             {
+            
+                instance_create(room_width/2, room_height/2, obj_remoteStudent);
+                with (obj_remoteStudent)
+                {
+                    global.remoteStudentId = pId;
+                    global.remoteStudentName = pName;
+                }
                 //create a remote player
-                var remoteStudent = instance_create(room_width/2, room_height/2, obj_remoteStudent);
-                remoteStudent.remoteStudentId = pId;
-                remoteStudent.remoteStudentName = pName;
+                //var remoteStudent = instance_create(room_width/2, room_height/2, obj_remoteStudent);
+                //remoteStudent.remoteStudentId = pId;
+                //remoteStudent.remoteStudentName = pName;
                 //remoteStudentScore = pScore
             }
         }
@@ -82,7 +89,7 @@ switch(msgId)
         {
             with (instance)
             {
-                instance_destroy();
+                //instance_destroy();
             }
         }
     break;
@@ -94,10 +101,10 @@ switch(msgId)
         
         with (obj_remoteStudent)
         {
-            if (remoteStudentId == pId)
+            if (global.remoteStudentId == pId)
             {
-                remoteStudentScore = pScore;
-                remoteStudentLife = pLife;
+                global.remoteStudentScore = pScore;
+                global.remoteStudentLife = pLife;
             }
         }
     
