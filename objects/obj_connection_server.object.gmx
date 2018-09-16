@@ -221,7 +221,7 @@ with (obj_student)
     draw_text(xx, yy+72, studentInGame);
 }
 
-yy += 60;   
+yy += 300;//60   
 </string>
           </argument>
         </arguments>

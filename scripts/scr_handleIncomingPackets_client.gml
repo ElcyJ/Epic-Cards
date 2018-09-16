@@ -31,6 +31,9 @@ switch(msgId)
             break;
             
             case 1://success
+            
+                global.studentVictories = buffer_read(buffer, buffer_u32);   
+            
                 room_goto(rm_mainMenu);
             break;
         }

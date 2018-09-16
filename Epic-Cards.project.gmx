@@ -50,6 +50,7 @@
     <object>objects\obj_remoteStudent</object>
     <object>objects\obj_localStudent</object>
     <object>objects\obj_controller</object>
+    <object>objects\obj_result</object>
     <objects name="menus">
       <objects name="registration">
         <object>objects\obj_textbox_password2</object>
@@ -72,7 +73,6 @@
         <object>objects\obj_btn_exit</object>
       </objects>
     </objects>
-    <object>objects\obj_result</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_teacherStudentSelect</room>

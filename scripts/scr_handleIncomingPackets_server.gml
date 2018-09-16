@@ -19,16 +19,30 @@ switch (msgId)
         var response = 0;
         
         //check if player already exists
-        ini_open('users.ini');
+        if (!file_exists(playerUsername + '.ini'))
+        {
+            //register a new player
+            ini_open(playerUsername + '.ini');
+            ini_write_string('alunos', 'username', playerUsername);
+            ini_write_string('alunos', 'password', passwordHash);
+            ini_write_real('alunos', 'victories', 0);
+            ini_close();
+            
+            response = 1;
+            scr_showNotification('Um novo aluno entrou!');
+        }
+
+        /*ini_open('users.ini');
         var playerExists = ini_read_string('users',playerUsername, 'false');
         if (playerExists == 'false')
         {
             //resgister a new player
             ini_write_string('users', playerUsername, passwordHash);
+            ini_write_real('users', playerUsername, 0);
             response = 1;
             scr_showNotification('Um novo jogador entrou!');
         }
-        ini_close();
+        ini_close();*/
         
         //send repsonse to the client
         buffer_seek(global.buffer, buffer_seek_start, 0);//seek to the beginning of the read buffer
@@ -46,10 +60,13 @@ switch (msgId)
         var response = 0;
         
         //check if player exists
-        ini_open('users.ini');
-        var playerStoredPassword = ini_read_string('users', playerUsername, 'false');
-        if (playerStoredPassword != 'false')
+        if (file_exists(playerUsername + '.ini'))
         {
+            ini_open(playerUsername + '.ini');
+            var playerStoredPassword = ini_read_string('alunos', 'password', '');
+            studentVictories = ini_read_real('alunos', 'victories', 0);
+            ini_close();
+            
             if (passwordHash == playerStoredPassword)
             {
                 response = 1;
@@ -61,14 +78,24 @@ switch (msgId)
                         studentName = playerUsername;
                     }
                 }
-            }
+            } 
         }
-        ini_close();
+        
+        //check if player exists
+        /*ini_open('users.ini');
+        var playerStoredPassword = ini_read_string('users', playerUsername, 'false');
+        studentVictories = ini_read_real('users', playerUsername, 0);//
+        if (playerStoredPassword != 'false')
+        {
+            
+        }
+        ini_close();*/
         
         //send a reponse
         buffer_seek(global.buffer, buffer_seek_start, 0);//seek to the beginning of the read buffer
         buffer_write(global.buffer, buffer_u8, 3);//write a tag to the global write buffer
         buffer_write(global.buffer, buffer_u8, response);//write the time receieved the global write buffer
+        buffer_write(global.buffer, buffer_u32, studentVictories);
         network_send_packet(socket, global.buffer, buffer_tell(global.buffer));
         
     break;
