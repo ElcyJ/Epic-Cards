@@ -28,6 +28,7 @@
             <string>remoteStudentName = '';
 remoteStudentId = 0;
 remoteStudentScore = 0;
+remoteStudentLife = 0;
 depth = -3000
 </string>
           </argument>
@@ -53,9 +54,11 @@ depth = -3000
             <kind>1</kind>
             <string>draw_set_color(c_red);
 //draw_circle(x, y, 15, true);
-draw_text(1632, 96, string(remoteStudentId)); //x, y-50,1632, 96
-draw_text(1632, 160, string(remoteStudentName)); //x, y-25,1632, 160
-draw_text(1632, 192, string(remoteStudentScore));//1632, 192
+draw_set_font(fnt_1);
+//draw_text(1632, 96, string(remoteStudentId)); //x, y-50,1632, 96
+draw_text(1632, 128, string(remoteStudentName)); //x, y-25,1632, 160
+draw_text(1632, 160, string(remoteStudentScore));
+draw_text(1632, 192, string(remoteStudentLife));
 </string>
           </argument>
         </arguments>

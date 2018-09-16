@@ -4,8 +4,8 @@ ds_list_add(cards, spr_e1, spr_e2);
 width = 6;
 height = 2;
 
-xx = 192
-yy = 394
+xx = 288//192
+yy = 320//394
 
 found = false;
 
@@ -249,12 +249,12 @@ for (var i = 0; i < width; i++)
             }
 
             found = false;
-            yy += 400//224;
+            yy += 392//384//400//224;
             
         }
         
-        xx += 288//160;
-        yy = 394//320;
+        xx += 272//288//160;
+        yy = 320;
 }
 with (obj_card)
 {

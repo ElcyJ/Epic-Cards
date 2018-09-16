@@ -139,6 +139,7 @@ switch (msgId)
    case 7:
         var pId = buffer_read(buffer, buffer_u32);
         var pScore = buffer_read(buffer, buffer_s32);
+        var pLife = buffer_read(buffer, buffer_s32);
         
         //tell others players about this change 
         for (var i = 0; i < ds_list_size(global.students); i++)
@@ -151,6 +152,7 @@ switch (msgId)
                 buffer_write(global.buffer, buffer_u8, 7);
                 buffer_write(global.buffer, buffer_u32, pId);
                 buffer_write(global.buffer, buffer_s32, pScore);
+                buffer_write(global.buffer, buffer_s32, pLife);
                 network_send_packet(storedStudentSocket, global.buffer, buffer_tell(global.buffer));
             }
          }

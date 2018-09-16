@@ -11,8 +11,8 @@
       <sprite>sprites\spr_btn_exit</sprite>
       <sprite>sprites\spr_btn_play</sprite>
       <sprite>sprites\spr_btn_login</sprite>
-      <sprite>sprites\spr_btn_teacher</sprite>
       <sprite>sprites\spr_student</sprite>
+      <sprite>sprites\spr_teacher</sprite>
       <sprite>sprites\spr_btn_register</sprite>
     </sprites>
     <sprites name="cards">
@@ -25,7 +25,9 @@
       <sprite>sprites\spr_e2</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bck_gameWorld</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_handleIncomingPackets_server.gml</script>
@@ -38,6 +40,7 @@
     <font>fonts\fnt_1</font>
   </fonts>
   <objects name="objects">
+    <object>objects\obj_begin</object>
     <object>objects\obj_card</object>
     <object>objects\obj_cardFire</object>
     <object>objects\obj_message</object>
@@ -69,6 +72,7 @@
         <object>objects\obj_btn_exit</object>
       </objects>
     </objects>
+    <object>objects\obj_result</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_teacherStudentSelect</room>
@@ -78,6 +82,7 @@
     <room>rooms\rm_login</room>
     <room>rooms\rm_gameWorld</room>
     <room>rooms\rm_mainMenu</room>
+    <room>rooms\rm_gameOver</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

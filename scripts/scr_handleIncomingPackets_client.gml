@@ -90,12 +90,14 @@ switch(msgId)
     case 7:
         var pId = buffer_read(buffer, buffer_u32);
         var pScore = buffer_read(buffer, buffer_s32);
+        var pLife = buffer_read(buffer, buffer_s32);
         
         with (obj_remoteStudent)
         {
             if (remoteStudentId == pId)
             {
                 remoteStudentScore = pScore;
+                remoteStudentLife = pLife;
             }
         }
     

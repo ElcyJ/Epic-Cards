@@ -8,6 +8,55 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>oldScore = 0; 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(obj_remoteStudent))
+{
+    oldScore = obj_remoteStudent.remoteStudentScore
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,12 +74,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//Update latency
+            <string>if (instance_exists(obj_remoteStudent))
+{
+    if (oldScore &lt; obj_remoteStudent.remoteStudentScore)
+    {
+        if (global.studentLife &gt;= 0)
+        {
+            global.studentLife -= 100;
+            oldScore = obj_remoteStudent.remoteStudentScore;
+        }
+    }
+}
+
+if (global.studentLife == 0 or obj_remoteStudent.remoteStudentScore == 0)
+{
+    room_goto(rm_gameOver);
+}
+
+
+//Update 
 buffer_seek(global.buffer, buffer_seek_start, 0);
 buffer_write(global.buffer, buffer_u8, 7);
 buffer_write(global.buffer, buffer_u32, global.studentId);
 buffer_write(global.buffer, buffer_s32, global.studentScore); //f
+buffer_write(global.buffer, buffer_s32, global.studentLife);
 network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));
 
 
@@ -56,9 +123,10 @@ network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(glo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour(c_green);
+            <string>//draw_set_colour(c_green);
 draw_circle(x, y, 15, true);
-draw_text(64, 162, global.studentScore);
+draw_text(64, 162, 'Score' + string(global.studentScore));
+draw_text(64, 194, 'Life' + string(global.studentLife));
 </string>
           </argument>
         </arguments>

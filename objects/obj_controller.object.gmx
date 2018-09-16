@@ -92,7 +92,7 @@ global.canSelect = true;
             <string>if (global.countdown &gt; 0) global.countdown-=(1/room_speed);
 else
 {
-    room_goto(rm_error);
+    room_goto(rm_gameOver);
 }
 </string>
           </argument>
@@ -120,16 +120,16 @@ else
 
 draw_set_font(fnt_1);
 
-draw_text(50, 10, 'Card 1 sprite_index: ' + string(global.match[0, 0]));
-draw_text(50, 42, 'Card 1 image_index: ' + string(global.match[0, 1]));//y25
-draw_text(50, 74, 'Card 1 id: ' + string(global.match[0, 2]));//y40
-draw_text(704, 10, 'Card 2 sprite_index: ' + string(global.match[1, 0]));//x400
-draw_text(704, 42, 'Card 2 image_index: ' + string(global.match[1, 1]));
-draw_text(704, 74, 'Card 2 id: ' + string(global.match[1, 2]));
+//draw_text(50, 10, 'Card 1 sprite_index: ' + string(global.match[0, 0]));
+//draw_text(50, 42, 'Card 1 image_index: ' + string(global.match[0, 1]));//y25
+//draw_text(50, 74, 'Card 1 id: ' + string(global.match[0, 2]));//y40
+//draw_text(704, 10, 'Card 2 sprite_index: ' + string(global.match[1, 0]));//x400
+//draw_text(704, 42, 'Card 2 image_index: ' + string(global.match[1, 1]));
+//draw_text(704, 74, 'Card 2 id: ' + string(global.match[1, 2]));
 
-draw_text(1300, 10, 'Flip Attempts: ' + string(global.flipAttempts));
+//draw_text(1300, 10, 'Flip Attempts: ' + string(global.flipAttempts));
 
-draw_text(1600, 10, 'Countdown: ' + string(global.countdown));
+draw_text(960, 64, string(global.countdown));
 </string>
           </argument>
         </arguments>
