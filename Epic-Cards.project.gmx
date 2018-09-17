@@ -37,6 +37,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bck_gameWorld</background>
+    <background>background\bck_teacherStudentSelect</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
