@@ -26,6 +26,14 @@
       <sprite>sprites\spr_e1</sprite>
       <sprite>sprites\spr_e2</sprite>
     </sprites>
+    <sprites name="bars">
+      <sprite>sprites\spr_lifeBar_border</sprite>
+      <sprite>sprites\spr_lifeBar_inner</sprite>
+      <sprite>sprites\spr_lifeBar_bg</sprite>
+      <sprite>sprites\spr_scoreBar_border</sprite>
+      <sprite>sprites\spr_scoreBar_inner</sprite>
+      <sprite>sprites\spr_scoreBar_bg</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_gameWorld</background>

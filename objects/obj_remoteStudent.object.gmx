@@ -59,7 +59,15 @@ draw_set_font(fnt_1);
 
 draw_text(1632, 128, string(global.remoteStudentName)); //x, y-25,1632, 160
 draw_text(1632, 160, string(global.remoteStudentScore));
-draw_text(1632, 192, string(global.remoteStudentLife));
+//draw_text(1632, 192, string(global.remoteStudentLife));
+
+draw_sprite(spr_lifeBar_bg, 0, 1056, 64);
+draw_sprite_ext(spr_lifeBar_inner, 0, 1056, 64, global.remoteStudentLife/1500, 1, 0, c_white, 1);
+draw_sprite(spr_lifeBar_border, 0, 1056, 64);
+
+draw_sprite(spr_scoreBar_bg, 0, 1824, 288);
+draw_sprite_ext(spr_scoreBar_inner, 0, 1824, 288, 1, global.remoteStudentScore/1000, 0, c_white, 1);
+draw_sprite(spr_scoreBar_border, 0, 1824, 288);
 </string>
           </argument>
         </arguments>

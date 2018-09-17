@@ -122,10 +122,19 @@ network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(glo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_set_colour(c_green);
-draw_circle(x, y, 15, true);
+            <string>draw_set_colour(c_green);
+//draw_circle(x, y, 15, true);
 draw_text(64, 162, 'Score' + string(global.studentScore));
-draw_text(64, 194, 'Life' + string(global.studentLife));
+//draw_text(64, 194, 'Life' + string(global.studentLife));
+
+
+draw_sprite(spr_lifeBar_bg, 0, 640, 64);
+draw_sprite_ext(spr_lifeBar_inner, 0, 640, 64, global.studentLife/1500, 1, 0, c_white, 1);
+draw_sprite(spr_lifeBar_border, 0, 640, 64);
+
+draw_sprite(spr_scoreBar_bg, 0, 32, 288);
+draw_sprite_ext(spr_scoreBar_inner, 0, 32, 288, 1, global.studentScore/1000, 0, c_white, 1);
+draw_sprite(spr_scoreBar_border, 0, 32, 288);
 
 
 
