@@ -33,14 +33,68 @@
     ini_write_real('alunos', 'victories', global.studentVictories);
     ini_close();
     
-    draw_text(x, y, global.studentVictories);
-    
-    /*buffer_seek(global.buffer, buffer_seek_start, 0);
-    buffer_write(global.buffer, buffer_u8, 6);
-    buffer_write(global.buffer, buffer_u32, global.studentId);
-    buffer_write(global.buffer, buffer_u32, global.studentVictories);
-    network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));*/
+    draw_text(room_width/2, room_height/2, global.studentVictories);//
 }
+
+ini_open('scores.ini');
+for (i = 0; i &lt; 10; i++)
+{
+    //fill the global scores array with values from the ini file
+    global.score_array[i, 0] = ini_read_string(string(i), 'Name', '');
+    global.score_array[i, 1] = ini_read_real(string(i), 'Score', 0);
+}
+ini_close();
+
+//search for first spot where player's score is greater
+for (i = 0; i &lt; 10; i++)
+{
+    if (global.name == global.score_array[i, 0])
+    {
+        if (global.studentVictories &gt;= global.score_array[i, 1])
+        {
+            global.score_array[i, 0] = global.name;
+            global.score_array[i, 1] = global.studentVictories;
+            break;
+        }
+    }
+    else
+    {
+        //if the player's score is greater than the spot in question 
+        if (global.studentVictories &gt; global.score_array[i, 1])
+        {
+            //start at the last element
+            for (j = 0; j &gt; i; j--)
+            {
+                global.score_array[j, 0] = global.score_array[j-1, 0];
+                global.score_array[j, 1] = global.score_array[j-1, 1];
+            }
+        //now set the space to that of this player
+        global.score_array[i, 0] = global.name;
+        global.score_array[i, 1] = global.studentVictories;
+        break;
+        }
+    }
+}
+
+//now update ini
+ini_open('scores.ini')
+for (i = 0; i &lt; 10; i++)
+{
+    ini_write_string(string(i), 'Name', global.score_array[i, 0]);
+    ini_write_real(string(i), 'Score', global.score_array[i, 1]);
+}
+ini_close();
+
+
+
+
+
+
+
+
+
+
+
 </string>
           </argument>
         </arguments>

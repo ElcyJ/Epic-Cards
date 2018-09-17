@@ -36,7 +36,6 @@ global.match[1, 2] = undefined
 
 global.can_Select = true;
 
-
 scr_cardGenerator();
 </string>
           </argument>

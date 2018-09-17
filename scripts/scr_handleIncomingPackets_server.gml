@@ -32,17 +32,17 @@ switch (msgId)
             scr_showNotification('Um novo aluno entrou!');
         }
 
-        /*ini_open('users.ini');
-        var playerExists = ini_read_string('users',playerUsername, 'false');
+        ini_open('usuarios.ini');
+        var playerExists = ini_read_string('usuarios',playerUsername, 'false');
         if (playerExists == 'false')
         {
             //resgister a new player
-            ini_write_string('users', playerUsername, passwordHash);
-            ini_write_real('users', playerUsername, 0);
+            //ini_write_string('users', playerUsername, passwordHash);
+            ini_write_string('usuarios', playerUsername, playerUsername);
             response = 1;
-            scr_showNotification('Um novo jogador entrou!');
+            //scr_showNotification('Um novo jogador entrou!');
         }
-        ini_close();*/
+        ini_close();
         
         //send repsonse to the client
         buffer_seek(global.buffer, buffer_seek_start, 0);//seek to the beginning of the read buffer

@@ -14,6 +14,8 @@
       <sprite>sprites\spr_student</sprite>
       <sprite>sprites\spr_teacher</sprite>
       <sprite>sprites\spr_btn_register</sprite>
+      <sprite>sprites\spr_btn_session</sprite>
+      <sprite>sprites\spr_btn_ranking</sprite>
     </sprites>
     <sprites name="cards">
       <sprite>sprites\spr_cardBase</sprite>
@@ -51,6 +53,7 @@
     <object>objects\obj_localStudent</object>
     <object>objects\obj_controller</object>
     <object>objects\obj_result</object>
+    <object>objects\obj_draw_ranking</object>
     <objects name="menus">
       <objects name="registration">
         <object>objects\obj_textbox_password2</object>
@@ -71,12 +74,16 @@
       <objects name="main menu">
         <object>objects\obj_btn_play</object>
         <object>objects\obj_btn_exit</object>
+        <object>objects\obj_btn_session</object>
+        <object>objects\obj_btn_ranking</object>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_teacherStudentSelect</room>
     <room>rooms\rm_teacherMenu</room>
+    <room>rooms\rm_server</room>
+    <room>rooms\rm_teacherRanking</room>
     <room>rooms\rm_loginRegisterSelect</room>
     <room>rooms\rm_register</room>
     <room>rooms\rm_login</room>

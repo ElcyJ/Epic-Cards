@@ -85,7 +85,7 @@ switch(eventType)
             studentInGame = false;
             studentSocket = socket;
         }
-        ds_list_add(global.students, socket);
+        ds_list_add(global.students, socket);//
         
         //send student id
         buffer_seek(global.buffer, buffer_seek_start, 0);

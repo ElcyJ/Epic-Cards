@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,23 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.flipAttempts = 0;
+            <string>xx = room_width/2 - 150;
+yy = 100; 
 
-global.studentScore = 0;
-
-global.countdown = 120;
-
-global.studentLife = 1500;
+draw_set_font(fnt_1);
+draw_set_halign(fa_left);
+draw_set_valign(fa_center);
 
 ini_open('scores.ini');
 for (i = 0; i &lt; 10; i++)
 {
-    global.score_array[i, 0] = '';
-    global.score_array[i, 1] = 0;
+    yy += 50
+    draw_text(xx, yy, ini_read_string(string(i), 'Name', ''));
+    draw_text(xx + 200, yy, ini_read_real(string(i), 'Score', noone));
+    
 }
+ini_close();
 
 
-
+/*for (i = 0; i &lt; 10; i++)
+{
+    yy += 50
+    draw_text(xx, yy, string(global.score_array[i, 0]));
+    draw_text(xx + 200, yy, string(global.score_array[i, 1]));
+    
+}*/
 </string>
           </argument>
         </arguments>
