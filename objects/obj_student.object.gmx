@@ -29,7 +29,10 @@
 studentName = '';
 studentInGame = false;
 studentSocket = 0;
+
+
 //studentScore = global.studentScore;
+
 </string>
           </argument>
         </arguments>

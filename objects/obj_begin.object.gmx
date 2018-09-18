@@ -40,6 +40,8 @@ for (i = 0; i &lt; 10; i++)
     global.score_array[i, 1] = 0;
 }
 
+global.aa = 0
+
 
 
 </string>

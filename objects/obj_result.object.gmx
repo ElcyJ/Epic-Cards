@@ -25,69 +25,89 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.studentScore &gt; global.remoteStudentLife)
+            <string>if instance_exists(obj_localStudent)
 {
-    global.studentVictories += 1
+    if (global.studentScore &gt; global.remoteStudentLife)
+    {
+        global.studentVictories += 1
+        
+        ini_open(global.name + '.ini');
+        ini_write_real('alunos', 'victories', global.studentVictories);
+        ini_close();
+        
+        draw_text(room_width/2, room_height/2, global.studentVictories);//
+    }
     
-    ini_open(global.name + '.ini');
-    ini_write_real('alunos', 'victories', global.studentVictories);
+    ini_open('scores.ini');
+    for (i = 0; i &lt; 10; i++)
+    {
+        //fill the global scores array with values from the ini file
+        global.score_array[i, 0] = ini_read_string(string(i), 'Name', '');
+        global.score_array[i, 1] = ini_read_real(string(i), 'Score', 0);
+    }
     ini_close();
     
-    draw_text(room_width/2, room_height/2, global.studentVictories);//
-}
-
-ini_open('scores.ini');
-for (i = 0; i &lt; 10; i++)
-{
-    //fill the global scores array with values from the ini file
-    global.score_array[i, 0] = ini_read_string(string(i), 'Name', '');
-    global.score_array[i, 1] = ini_read_real(string(i), 'Score', 0);
-}
-ini_close();
-
-//search for first spot where player's score is greater
-for (i = 0; i &lt; 10; i++)
-{
-    if (global.name == global.score_array[i, 0])
+    //search for first spot where player's score is greater
+    for (i = 0; i &lt; 10; i++)
     {
-        if (global.studentVictories &gt;= global.score_array[i, 1])
+        if (global.name == global.score_array[i, 0])
         {
+            if (global.studentVictories &gt;= global.score_array[i, 1])
+            {
+                global.score_array[i, 0] = global.name;
+                global.score_array[i, 1] = global.studentVictories;
+                break;
+            }
+        }
+        else
+        {
+            //if the player's score is greater than the spot in question 
+            if (global.studentVictories &gt; global.score_array[i, 1])
+            {
+                //start at the last element
+                for (j = 0; j &gt; i; j--)
+                {
+                    global.score_array[j, 0] = global.score_array[j-1, 0];
+                    global.score_array[j, 1] = global.score_array[j-1, 1];
+                }
+            //now set the space to that of this player
             global.score_array[i, 0] = global.name;
             global.score_array[i, 1] = global.studentVictories;
             break;
-        }
-    }
-    else
-    {
-        //if the player's score is greater than the spot in question 
-        if (global.studentVictories &gt; global.score_array[i, 1])
-        {
-            //start at the last element
-            for (j = 0; j &gt; i; j--)
-            {
-                global.score_array[j, 0] = global.score_array[j-1, 0];
-                global.score_array[j, 1] = global.score_array[j-1, 1];
             }
-        //now set the space to that of this player
-        global.score_array[i, 0] = global.name;
-        global.score_array[i, 1] = global.studentVictories;
-        break;
         }
     }
+    
+    //now update ini
+    ini_open('scores.ini')
+    for (i = 0; i &lt; 10; i++)
+    {
+        ini_write_string(string(i), 'Name', global.score_array[i, 0]);
+        ini_write_real(string(i), 'Score', global.score_array[i, 1]);
+    }
+    ini_close();
+    
+    
+    
+    //restart
+    global.flipAttempts = 0;
+    
+    global.studentScore = 0;
+    
+    global.countdown = 120;
+    
+    global.studentLife = 1500;
+    
+    ini_open('scores.ini');
+    for (i = 0; i &lt; 10; i++)
+    {
+        global.score_array[i, 0] = '';
+        global.score_array[i, 1] = 0;
+    }
+    
+    instance_destroy(obj_localStudent);
+    instance_destroy(obj_remoteStudent);
 }
-
-//now update ini
-ini_open('scores.ini')
-for (i = 0; i &lt; 10; i++)
-{
-    ini_write_string(string(i), 'Name', global.score_array[i, 0]);
-    ini_write_real(string(i), 'Score', global.score_array[i, 1]);
-}
-ini_close();
-
-
-
-
 
 
 

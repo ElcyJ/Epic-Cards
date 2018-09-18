@@ -115,9 +115,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_colour(make_colour_rgb(183, 224, 31));
+            <string>draw_set_colour(c_black);
 
 draw_set_font(fnt_1);
+
 
 //draw_text(50, 10, 'Card 1 sprite_index: ' + string(global.match[0, 0]));
 //draw_text(50, 42, 'Card 1 image_index: ' + string(global.match[0, 1]));//y25
@@ -128,7 +129,7 @@ draw_set_font(fnt_1);
 
 //draw_text(1300, 10, 'Flip Attempts: ' + string(global.flipAttempts));
 
-draw_text(960, 64, string(global.countdown));
+draw_text(896, 32, string(global.countdown));
 </string>
           </argument>
         </arguments>

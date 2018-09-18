@@ -29,13 +29,13 @@
 {
     if (obj_textbox_username.txt == '')
     {
-        scr_showNotification('Crie seu nome de usuário');
+        scr_showNotification('Escreva seu nome de usuário');
         exit;
     }
     
     if (obj_textbox_password1.txt == '')
     {
-        scr_showNotification('Crie sua senha');
+        scr_showNotification('Escreva sua senha');
         exit;
     }
     

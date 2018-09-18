@@ -1,5 +1,5 @@
 cards = ds_list_create();
-ds_list_add(cards, spr_e1, spr_e2);
+ds_list_add(cards, spr_e0, spr_e1, spr_e2);
 
 width = 6;
 height = 2;
@@ -13,7 +13,7 @@ sort = ds_list_create();
 ds_list_add(sort, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11');
 randomize();
 ds_list_shuffle(sort);
-randomInt = ds_list_find_value(sort, ds_list_size(cards) - 1);//size(cards)
+randomInt = ds_list_find_value(sort, ds_list_size(sort) - 1);//size(cards)
 
 val = noone;
 val2 = noone;

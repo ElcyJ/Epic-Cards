@@ -52,6 +52,8 @@
         var playerPassword = obj_textbox_password1.txt;
         var playerPasswordHash = sha1_string_unicode(playerPassword);
         
+        global.name = playerUsername;
+        
         buffer_seek(global.buffer, buffer_seek_start, 0);
         buffer_write(global.buffer, buffer_u8, 2);
         buffer_write(global.buffer, buffer_string, playerUsername);

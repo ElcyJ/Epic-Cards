@@ -168,7 +168,7 @@ global.can_Select = true;
                         back1 = obj_cardFire.pos
                         back2 = instance_place(x, y, obj_cardFire);
                     }
-
+                    
                     with back1 instance_destroy();
                     with back2 instance_destroy();
                     

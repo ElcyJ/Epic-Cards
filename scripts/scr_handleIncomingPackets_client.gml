@@ -34,7 +34,7 @@ switch(msgId)
             
                 global.studentVictories = buffer_read(buffer, buffer_u32);   
             
-                room_goto(rm_mainMenu);
+                room_goto(rm_gameMenu);
             break;
         }
     break;
@@ -92,7 +92,7 @@ switch(msgId)
         {
             with (instance)
             {
-                //instance_destroy();
+                instance_destroy();
             }
         }
     break;

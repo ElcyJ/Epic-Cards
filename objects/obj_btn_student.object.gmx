@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != rm_loginRegisterSelect)
+            <string>if (room != rm_mainMenu)
 {
-    room_goto(rm_loginRegisterSelect)    
+    room_goto(rm_mainMenu)    
 }
 </string>
           </argument>

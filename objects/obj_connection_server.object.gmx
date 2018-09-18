@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>var networkType = network_socket_tcp;
 var port = 50000;
-var maxPlayers = 32; //32
+var maxPlayers = 2; //32
 var bufferSize = 1024;
 var bufferType = buffer_fixed;
 var bufferAlignment = 1;
@@ -45,6 +45,10 @@ with(obj_message)
 
 var notification = instance_create(0, 0, obj_message);
 notification.message = 'Servidor ligado!';
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -205,45 +209,6 @@ ds_list_destroy(global.students);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*draw_set_colour(c_white);
-draw_set_font(fnt_1);
-draw_set_valign(fa_middle);
-draw_text(5, 5, 'Server status: ' + string(server &gt;= 0));
-draw_text(5, 20, 'Total clients: ' + string(ds_list_size(global.students))); //not global
-
-var xx = room_width/2;
-var yy = 150;
-
-with (obj_student)
-{
-    draw_text(xx, yy, studentIdentifier);
-    draw_text(xx, yy+32, studentName);
-    draw_text(xx, yy+72, studentInGame);
-}
-
-yy += 300;//60   
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>draw_set_colour(c_white);
 draw_set_font(fnt_1);
 draw_set_valign(fa_middle);
@@ -253,14 +218,25 @@ draw_text(5, 20, 'Total clients: ' + string(ds_list_size(global.students))); //n
 var xx = room_width/2;
 var yy = 150;
 
+
 with (obj_student)
 {
-    draw_text(xx, yy, studentIdentifier);
+    //draw_text(xx, yy, studentIdentifier);
     draw_text(xx, yy+32, studentName);
-    draw_text(xx, yy+72, studentInGame);
+    if studentInGame
+    {
+        draw_text(xx, yy+72, 'Em jogo');
+    }
+    else
+    {
+        draw_text(xx, yy+72, 'Preparando');
+    }
+     
 }
+yy += 150;
 
-yy += 300;//60   
+
+ 
 </string>
           </argument>
         </arguments>
