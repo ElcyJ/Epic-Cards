@@ -13,7 +13,7 @@ switch(msgId)
         switch(response)
         {
             case 0://failure
-                scr_showNotification('cadastro falhou! Nome de usuário já existe');
+                scr_showNotification('Cadastro falhou! Nome de usuario já existe');
             break;
             
             case 1://success
@@ -27,7 +27,7 @@ switch(msgId)
         switch(response)
         {
             case 0://failure
-                scr_showNotification('login falhou! Nome de usuário não existe ou senha incorreta');
+                scr_showNotification('Login falhou! Nome de usuario não existe ou senha incorreta');
             break;
             
             case 1://success
@@ -92,7 +92,7 @@ switch(msgId)
         {
             with (instance)
             {
-                instance_destroy();
+                //instance_destroy();
             }
         }
     break;

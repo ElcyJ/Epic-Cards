@@ -1,5 +1,6 @@
 cards = ds_list_create();
-ds_list_add(cards, spr_e0, spr_e1, spr_e2);
+ds_list_add(cards, spr_e1, spr_e2, spr_e3, spr_e4, spr_e5, spr_e6, spr_e7, spr_e8, spr_e9, spr_e10, spr_e11, spr_e12, spr_e13, spr_e14, spr_e15);
+ds_list_add(cards, spr_e16, spr_e17, spr_e18, spr_e19, spr_e20, spr_e21, spr_e22, spr_e23, spr_e24);
 
 width = 6;
 height = 2;
@@ -249,11 +250,11 @@ for (var i = 0; i < width; i++)
             }
 
             found = false;
-            yy += 392//384//400//224;
+            yy += 416//392//384//400//224;
             
         }
         
-        xx += 272//288//160;
+        xx += 265;//270;
         yy = 320;
 }
 with (obj_card)

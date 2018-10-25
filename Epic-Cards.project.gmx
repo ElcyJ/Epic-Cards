@@ -30,9 +30,30 @@
       <sprite>sprites\spr_cardWater</sprite>
     </sprites>
     <sprites name="equations">
-      <sprite>sprites\spr_e0</sprite>
       <sprite>sprites\spr_e1</sprite>
       <sprite>sprites\spr_e2</sprite>
+      <sprite>sprites\spr_e3</sprite>
+      <sprite>sprites\spr_e4</sprite>
+      <sprite>sprites\spr_e5</sprite>
+      <sprite>sprites\spr_e6</sprite>
+      <sprite>sprites\spr_e7</sprite>
+      <sprite>sprites\spr_e8</sprite>
+      <sprite>sprites\spr_e9</sprite>
+      <sprite>sprites\spr_e10</sprite>
+      <sprite>sprites\spr_e11</sprite>
+      <sprite>sprites\spr_e12</sprite>
+      <sprite>sprites\spr_e13</sprite>
+      <sprite>sprites\spr_e14</sprite>
+      <sprite>sprites\spr_e15</sprite>
+      <sprite>sprites\spr_e16</sprite>
+      <sprite>sprites\spr_e17</sprite>
+      <sprite>sprites\spr_e18</sprite>
+      <sprite>sprites\spr_e19</sprite>
+      <sprite>sprites\spr_e20</sprite>
+      <sprite>sprites\spr_e21</sprite>
+      <sprite>sprites\spr_e22</sprite>
+      <sprite>sprites\spr_e23</sprite>
+      <sprite>sprites\spr_e24</sprite>
     </sprites>
     <sprites name="bars">
       <sprite>sprites\spr_lifeBar_border</sprite>
@@ -53,6 +74,11 @@
     <background>background\bck_table</background>
     <background>background\bck_backWater</background>
     <background>background\bck_wood</background>
+    <background>background\bck_gameOver</background>
+    <background>background\bck_water1</background>
+    <background>background\bck_water2</background>
+    <background>background\bck_water3</background>
+    <background>background\bck_fire2</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -64,6 +90,8 @@
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
     <font>fonts\fnt_1</font>
+    <font>fonts\fnt_2</font>
+    <font>fonts\fnt_3</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_begin</object>
@@ -112,6 +140,8 @@
     </objects>
     <object>objects\obj_teacherTheme</object>
     <object>objects\obj_studentTheme</object>
+    <object>objects\object32</object>
+    <object>objects\object33</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_teacherStudentSelect</room>

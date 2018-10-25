@@ -32,11 +32,11 @@ draw_set_font(fnt_1);
 //draw_set_halign(fa_left);
 //draw_set_valign(fa_center);
 
-ini_open('scores.ini');
+ini_open('rank.ini');
 for (i = 0; i &lt; 10; i++)
 {
     
-    draw_text(xx, yy, string(i))
+    draw_text(xx, yy, string(i+1))
     draw_text(xx + 256, yy, ini_read_string(string(i), 'Name', ''));
     draw_text(xx + 1120, yy, ini_read_real(string(i), 'Score', noone));
     yy += 65

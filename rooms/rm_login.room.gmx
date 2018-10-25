@@ -55,7 +55,7 @@
     <instance objName="obj_btn_login" x="960" y="800" name="inst_0D680C0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_textbox_password1" x="928" y="672" name="inst_BE0CA888" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_studentTheme" x="960" y="320" name="inst_2FEFF7CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_btn_backLoginRegister" x="960" y="992" name="inst_69CF4005" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_btn_backLoginRegister" x="960" y="928" name="inst_69CF4005" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

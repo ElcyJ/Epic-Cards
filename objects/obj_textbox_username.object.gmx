@@ -73,7 +73,7 @@
             <kind>1</kind>
             <string>if (can_click)
 {
-    msg = get_string_async("Escreva seu nome","Ana");
+    msg = get_string_async("Escreva seu nome","");
     selected = true;
     //keyboard_string = txt;
     obj_textbox_password1.selected = false;
@@ -144,7 +144,7 @@
             <string>event_inherited();
 if (txt == '')
 {
-    draw_text(x, y, 'Escreva seu nome');
+    draw_text(x, y, 'Nome');
 }
 else
 {

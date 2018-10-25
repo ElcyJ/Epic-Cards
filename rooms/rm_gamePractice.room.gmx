@@ -21,7 +21,23 @@
 //buffer_seek(global.buffer, buffer_seek_start, 0);
 //buffer_write(global.buffer, buffer_u8, 6);
 //buffer_write(global.buffer, buffer_u32, global.studentId);
-//network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));</code>
+//network_send_packet(obj_connection_client.socket, global.buffer, buffer_tell(global.buffer));
+
+
+randomize();
+back = irandom(1);
+if (back == 0)
+{
+    background_index[0] = bck_backFire
+    background_index[1] = bck_fire
+    background_index[2] = bck_wood
+}
+else
+{
+    background_index[0] = bck_water1
+    background_index[1] = bck_water2
+    background_index[2] = bck_water3
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

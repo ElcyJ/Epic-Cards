@@ -79,8 +79,9 @@ alarm[0] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_main);
-draw_set_colour(make_colour_rgb(183, 224, 31));
+            <string>draw_set_font(fnt_2);
+//draw_set_colour(make_colour_rgb(183, 224, 31));
+draw_set_color(c_black);
 draw_sprite(sprite_index, image_index, x, y);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);

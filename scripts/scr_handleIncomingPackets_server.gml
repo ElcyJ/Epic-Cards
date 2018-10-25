@@ -29,7 +29,7 @@ switch (msgId)
             ini_close();
             
             response = 1;
-            scr_showNotification('Um novo aluno entrou!');
+            //scr_showNotification('Um novo aluno entrou!');
         }
 
         ini_open('usuarios.ini');
@@ -70,7 +70,7 @@ switch (msgId)
             if (passwordHash == playerStoredPassword)
             {
                 response = 1;
-                
+                scr_showNotification('Um novo aluno entrou!');
                 with (obj_student)
                 {
                     if (studentIdentifier == pId)

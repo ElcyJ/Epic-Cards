@@ -91,7 +91,14 @@ global.canSelect = true;
             <string>if (global.countdown &gt; 0) global.countdown-=(1/room_speed);
 else
 {
-    room_goto(rm_gameOver);
+    if room == rm_gameWorld
+    {
+        room_goto(rm_gameOver);
+    }
+    else
+    {
+        room_goto(rm_mainMenu)
+    }
 }
 </string>
           </argument>

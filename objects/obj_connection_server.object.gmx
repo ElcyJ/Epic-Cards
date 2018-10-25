@@ -211,9 +211,17 @@ ds_list_destroy(global.students);
             <kind>1</kind>
             <string>draw_set_colour(c_white);
 draw_set_font(fnt_1);
-draw_set_valign(fa_middle);
-draw_text(5, 5, 'Server status: ' + string(server &gt;= 0));
-draw_text(5, 20, 'Total clients: ' + string(ds_list_size(global.students))); //not global
+//draw_set_valign(fa_middle);
+
+if server &gt;= 0
+{
+    draw_text(64, 64, 'Sala: on');
+}
+else
+{
+    draw_text(64, 64, 'Sala: off');
+}
+//draw_text(5, 20, 'Total clients: ' + string(ds_list_size(global.students))); //not global
 
 var xx = room_width/2;
 var yy = 150;
@@ -222,15 +230,15 @@ var yy = 150;
 with (obj_student)
 {
     //draw_text(xx, yy, studentIdentifier);
-    draw_text(xx, yy+32, studentName);
+    //draw_text(xx, yy+32, studentName);
     if studentInGame
     {
-        draw_text(xx, yy+72, 'Em jogo');
+        draw_text(480, 480, 'Aluno em Jogo');
     }
-    else
-    {
-        draw_text(xx, yy+72, 'Preparando');
-    }
+    //else
+    //{
+       // draw_text(xx, yy+72, '');
+    //}
      
 }
 yy += 150;
