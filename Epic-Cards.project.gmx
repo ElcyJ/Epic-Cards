@@ -33,7 +33,6 @@
       <sprite>sprites\spr_e1</sprite>
       <sprite>sprites\spr_e2</sprite>
       <sprite>sprites\spr_e3</sprite>
-      <sprite>sprites\spr_e4</sprite>
       <sprite>sprites\spr_e5</sprite>
       <sprite>sprites\spr_e6</sprite>
       <sprite>sprites\spr_e7</sprite>
@@ -53,7 +52,20 @@
       <sprite>sprites\spr_e21</sprite>
       <sprite>sprites\spr_e22</sprite>
       <sprite>sprites\spr_e23</sprite>
+      <sprite>sprites\spr_e25</sprite>
+      <sprite>sprites\spr_e26</sprite>
+      <sprite>sprites\spr_e30</sprite>
+      <sprite>sprites\spr_e31</sprite>
+      <sprite>sprites\spr_e32</sprite>
+      <sprite>sprites\spr_e33</sprite>
+      <sprite>sprites\spr_e34</sprite>
+      <sprite>sprites\spr_e36</sprite>
+      <sprite>sprites\spr_e37</sprite>
+      <sprite>sprites\spr_e38</sprite>
+      <sprite>sprites\spr_e4</sprite>
       <sprite>sprites\spr_e24</sprite>
+      <sprite>sprites\spr_e27</sprite>
+      <sprite>sprites\spr_e28</sprite>
     </sprites>
     <sprites name="bars">
       <sprite>sprites\spr_lifeBar_border</sprite>

@@ -1,7 +1,7 @@
 cards = ds_list_create();
 ds_list_add(cards, spr_e1, spr_e2, spr_e3, spr_e4, spr_e5, spr_e6, spr_e7, spr_e8, spr_e9, spr_e10, spr_e11, spr_e12, spr_e13, spr_e14, spr_e15);
-ds_list_add(cards, spr_e16, spr_e17, spr_e18, spr_e19, spr_e20, spr_e21, spr_e22, spr_e23, spr_e24);
-
+ds_list_add(cards, spr_e16, spr_e17, spr_e18, spr_e19, spr_e20, spr_e21, spr_e22, spr_e23, spr_e24, spr_e25, spr_e26, spr_e27, spr_e28, spr_e30);
+ds_list_add(cards, spr_e31, spr_e32, spr_e33, spr_e34, spr_e36, spr_e37, spr_e38)
 width = 6;
 height = 2;
 
